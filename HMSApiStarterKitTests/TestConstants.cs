@@ -9,16 +9,16 @@ namespace com.healthmarketscience.api.samples.dotnet
     static class TestConstants
     {
         // TODO: Test with trial.hmsonline.com and a valid key/secret pair, then remove the internal information and uncomment the code below
-        internal static Core.HmsApiConfig TEST_API_CONFIGURATION = new Core.HmsApiConfig("https://trial.hmsonline.com", "v1", "masterfile");
-        internal const string DEFAULT_KEY = "<get from your sales representative>";
-        internal const string DEFAULT_SECRET = "<get from your sales representative>";
+        internal static Core.HmsApiConfig TEST_API_CONFIGURATION = new Core.HmsApiConfig("https://api.hmsonline.com", "v1", "masterfile");
+        internal const string DEFAULT_KEY = "20r5ptA2LkM9CwJ16JKodQ";        
+        internal const string DEFAULT_SECRET = "WmlpyC0ePtnU9u/l5kJ4kH0fcnmfNduSdOaAHW7NQUQ=";
 
         internal static IDictionary<string, string> GetSearchParameters()
         {
             return new Dictionary<string, string>() {
-                { "timestamp",  (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond).ToString() },
+                { "timestamp",  ((long)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds).ToString()},
                 { "key", TestConstants.DEFAULT_KEY }
             };
         }
-    }
+    }    
 }
